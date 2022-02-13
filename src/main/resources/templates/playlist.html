@@ -6,16 +6,24 @@
 </head>
 <body>
 
-<div>
-    <div class="row">
-        <div th:each="item: ${tracks.items}">
-            <div class="card-body text-center py-1">
-                <p class="card-title text-dark font-weight-bold" th:text="${item.track.name}">Track</p>
-                <p class="card-title text-muted" th:text="${item.track.artists[0].name}">Artist</p>
-            </div>
-        </div>
-    </div>
-</div>
+<table>
+    <thead>
+    <tr>
+        <th> Track</th>
+        <th> Artist</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${tracks.empty}">
+            <td colspan="2"> No Tracks Available</td>
+        </tr>
+        <tr th:each="track: ${tracks}">
+            <td><span th:text="${track.name}"> Track </span></td>
+            <td><span th:text="${track.artists[0].name}"> Artist </span></td>
+        </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

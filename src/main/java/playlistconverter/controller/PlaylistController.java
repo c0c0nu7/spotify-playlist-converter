@@ -5,7 +5,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import playlistconverter.domain.Playlist;
 import playlistconverter.services.PlaylistService;
+import playlistconverter.services.excel.ExcelService;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class PlaylistController {
 
     private final PlaylistService playlistService;
+    private final ExcelService excelService;
 
     @GetMapping(value = "/playlist", produces = MediaType.TEXT_HTML_VALUE)
     public String getPlaylist(
@@ -22,9 +25,11 @@ public class PlaylistController {
     ) {
         String token = (String) session.getAttribute("token");
 
-        Object playlist = playlistService.getPlaylistTracks(token);
+        Playlist playlist = playlistService.getPlaylist(token);
 
-        model.addAttribute("tracks", playlist);
+        excelService.createExcel(playlist);
+
+        model.addAttribute("tracks", playlist.getTracks());
 
         return "playlist";
     }

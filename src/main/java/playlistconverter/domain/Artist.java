@@ -8,5 +8,4 @@ import lombok.Setter;
 public class Artist {
 
     private String name;
-
 }
