@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import playlistconverter.domain.Playlist;
 import playlistconverter.services.PlaylistService;
-import playlistconverter.services.excel.ExcelService;
+import playlistconverter.interfaces.IExcelService;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class PlaylistController {
 
     private final PlaylistService playlistService;
-    private final ExcelService excelService;
+    private final IExcelService excelService;
 
     @GetMapping(value = "/playlist", produces = MediaType.TEXT_HTML_VALUE)
     public String getPlaylist(

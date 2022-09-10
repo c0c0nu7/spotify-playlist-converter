@@ -1,4 +1,4 @@
-package playlistconverter.services.excel;
+package playlistconverter.interfaces;
 
 import playlistconverter.domain.Playlist;
 
