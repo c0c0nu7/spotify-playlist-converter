@@ -27,7 +27,7 @@ public class PlaylistController {
 
         Playlist playlist = playlistService.getPlaylist(token);
 
-        excelService.createExcel(playlist);
+        excelService.generateExcel(playlist);
 
         model.addAttribute("tracks", playlist.getTracks());
 

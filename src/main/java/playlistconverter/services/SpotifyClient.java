@@ -30,20 +30,19 @@ public class SpotifyClient {
     }
 
     private Playlist mapPlaylistDtoToPlaylist(PlaylistDto dto) {
-        Playlist playlist = new Playlist();
+        Playlist playlist = Playlist.builder().build();
 
         dto.getTracks().getItems().stream()
                 .map(ItemDto::getTrack)
                 .forEach(trackDto -> {
-                    Track track = new Track();
-
-                    track.setName(trackDto.getName());
+                    Track track = Track.builder()
+                            .name(trackDto.getName())
+                            .build();
 
                     trackDto.getArtists().forEach(artistDto -> {
-                        Artist artist = new Artist();
-                        artist.setName(artistDto.getName());
-
-
+                        Artist artist = Artist.builder()
+                                .name(artistDto.getName())
+                                .build();
                         track.getArtists().add(artist);
                     });
 

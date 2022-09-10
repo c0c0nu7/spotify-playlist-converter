@@ -3,4 +3,4 @@ authorization:
   client_secret:
 
 excel:
-  path:
+  path: C:/Users/maxth/Desktop/playlist.xls
